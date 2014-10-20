@@ -15,12 +15,12 @@ Use PGS4A ( pygame ) or Kivy and get ouyacontroller up / down / motion events
       controller.get_events()
       
       if controller.up(controller.BUTTON_O):
-        print("player released BUTTON_O")
+        print("player 0 released BUTTON_O")
         
-      if controller.down(controller.BUTTON_O):
-        print("player pressed BUTTON_O")
+      if controller.down(controller.BUTTON_O, 1):
+        print("player 1 pressed BUTTON_O")
         
-      if controller.motion(controller.BUTTON_O):
-        print("player is holding BUTTON_O down")
+      if controller.motion(controller.BUTTON_O, 2):
+        print("player 2 is holding BUTTON_O down")
         
       controller.update()
