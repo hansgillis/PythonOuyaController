@@ -23,4 +23,6 @@ Use PGS4A ( pygame ) or Kivy and get ouyacontroller up / down / motion events
       if controller.motion(controller.BUTTON_O, 2):
         print("player 2 is holding BUTTON_O down")
         
+      print("player 3 left_stick values", controller.get_left_stick(3))
+      
       controller.update()
