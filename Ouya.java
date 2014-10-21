@@ -10,31 +10,44 @@ public class Ouya {
 	static int MAX_CONTROLLERS = 4;
 
 	/**
-	 * Returns empty boolean array
+	 * Returns false boolean array
 	 */
-	private static boolean[] getArray() {
+	private static boolean[] getBooleanArray() {
 		boolean[] array = new boolean[MAX_CONTROLLERS];
 		return array;
 	}
 	
-	static boolean[] BUTTON_MENU = getArray();
-
-	static boolean[] BUTTON_O = getArray();
-	static boolean[] BUTTON_U = getArray();
-	static boolean[] BUTTON_Y = getArray();
-	static boolean[] BUTTON_A = getArray();
-
-	static boolean[] BUTTON_DPAD_UP = getArray();
-	static boolean[] BUTTON_DPAD_DOWN = getArray();
-	static boolean[] BUTTON_DPAD_LEFT = getArray();
-	static boolean[] BUTTON_DPAD_RIGHT = getArray();
+	/**
+	 * Returns 0.00 float array
+	 */
+	private static float[] getFloatArray() {
+		float[] array = new float[MAX_CONTROLLERS];
+		return array;
+	}
 	
-	static boolean[] BUTTON_L1 = getArray();
-	static boolean[] BUTTON_L2 = getArray();
-	static boolean[] BUTTON_L3 = getArray();
-	static boolean[] BUTTON_R1 = getArray();
-	static boolean[] BUTTON_R2 = getArray();
-	static boolean[] BUTTON_R3 = getArray();
+	static boolean[] BUTTON_MENU = getBooleanArray();
+
+	static boolean[] BUTTON_O = getBooleanArray();
+	static boolean[] BUTTON_U = getBooleanArray();
+	static boolean[] BUTTON_Y = getBooleanArray();
+	static boolean[] BUTTON_A = getBooleanArray();
+
+	static boolean[] BUTTON_DPAD_UP = getBooleanArray();
+	static boolean[] BUTTON_DPAD_DOWN = getBooleanArray();
+	static boolean[] BUTTON_DPAD_LEFT = getBooleanArray();
+	static boolean[] BUTTON_DPAD_RIGHT = getBooleanArray();
+	
+	static boolean[] BUTTON_L1 = getBooleanArray();
+	static boolean[] BUTTON_L2 = getBooleanArray();
+	static boolean[] BUTTON_L3 = getBooleanArray();
+	static boolean[] BUTTON_R1 = getBooleanArray();
+	static boolean[] BUTTON_R2 = getBooleanArray();
+	static boolean[] BUTTON_R3 = getBooleanArray();
+	
+	static float[] AXIS_LS_X = getFloatArray();
+	static float[] AXIS_LS_Y = getFloatArray();
+	static float[] AXIS_RS_X = getFloatArray();
+	static float[] AXIS_RS_Y = getFloatArray();
 	
 	/**
 	 * Sets BUTTON_MENU boolean state according to player ID
@@ -140,6 +153,34 @@ public class Ouya {
 	public static void setBUTTON_R3(int player, boolean state) {
         BUTTON_R3[player] = state;
 	}
+
+	/**
+	 * Sets AXIS_LS_X float value according to player ID
+	 */
+	public static void setAXIS_LS_X(int player, float value) {
+        AXIS_LS_X[player] = value;
+	}
+	
+	/**
+	 * Sets AXIS_LS_Y float value according to player ID
+	 */
+	public static void setAXIS_LS_Y(int player, float value) {
+        AXIS_LS_Y[player] = value;
+	}
+	
+	/**
+	 * Sets AXIS_RS_X float value according to player ID
+	 */
+	public static void setAXIS_RS_X(int player, float value) {
+        AXIS_RS_X[player] = value;
+	}
+	
+	/**
+	 * Sets AXIS_RS_Y float value according to player ID
+	 */
+	public static void setAXIS_RS_Y(int player, float value) {
+        AXIS_RS_Y[player] = value;
+	}
     
 	/**
 	 * Gets BUTTON_MENU boolean state according to player ID
@@ -244,5 +285,33 @@ public class Ouya {
 	 */
 	public static boolean getBUTTON_R3(int player) {
         return BUTTON_R3[player];
+	}
+	
+	/**
+	 * Gets AXIS_LS_X float value
+	 */
+	public static float getAXIS_LS_X(int player) {
+        return AXIS_LS_X[player];
+	}
+	
+	/**
+	 * Gets AXIS_LS_Y float value
+	 */
+	public static float getAXIS_LS_Y(int player) {
+        return AXIS_LS_Y[player];
+	}
+	
+	/**
+	 * Gets AXIS_RS_X float value
+	 */
+	public static float getAXIS_RS_X(int player) {
+        return AXIS_RS_X[player];
+	}
+	
+	/**
+	 * Gets AXIS_RS_Y float value
+	 */
+	public static float getAXIS_RS_Y(int player) {
+        return AXIS_RS_Y[player];
 	}
 }

@@ -463,7 +463,7 @@ public class PythonActivity extends OuyaActivity implements Runnable {
         }
     }
 
-    public static boolean getButton(int player, int button){
+    public static boolean getBUTTON(int player, int button){
 		if(button == 0x0001){
 			return ouya.getBUTTON_O(player);
 		}
@@ -512,7 +512,23 @@ public class PythonActivity extends OuyaActivity implements Runnable {
 		return false;
     }
 	
-	public static void setPad(int player){
+	public static float getAXIS(int player, int axis){
+		if(axis == 0x0001){
+			return ouya.getAXIS_LS_X(player);
+		}
+		else if(axis == 0x0002){
+			return ouya.getAXIS_LS_Y(player);
+		}
+		else if(axis == 0x0004){
+			return ouya.getAXIS_RS_X(player);
+		}
+		else if(axis == 0x0008){
+			return ouya.getAXIS_RS_Y(player);
+		}
+		return 0.0f;
+    }
+	
+	public static void setDPAD(int player){
 		try
 		{
 			OuyaController c = OuyaController.getControllerByPlayer(player);
@@ -551,6 +567,33 @@ public class PythonActivity extends OuyaActivity implements Runnable {
 			{
 				ouya.setBUTTON_DPAD_RIGHT(player, false);
 			}
+		}
+		catch(Exception e){}
+		
+    }
+	public static void setAXIS(int player){
+		try
+		{
+			OuyaController c = OuyaController.getControllerByPlayer(player);
+
+			float LS_X = c.getAxisValue(OuyaController.AXIS_LS_X);
+			float LS_Y = c.getAxisValue(OuyaController.AXIS_LS_Y);
+			float RS_X = c.getAxisValue(OuyaController.AXIS_RS_X);
+			float RS_Y = c.getAxisValue(OuyaController.AXIS_RS_Y);
+			
+			if (LS_X * LS_X + LS_Y * LS_Y < OuyaController.STICK_DEADZONE * OuyaController.STICK_DEADZONE) {
+				LS_X = 0.0f;
+				LS_Y = 0.0f;
+			}
+			
+			if (RS_X * RS_X + RS_Y * RS_Y < OuyaController.STICK_DEADZONE * OuyaController.STICK_DEADZONE) {
+				RS_X = 0.0f;
+				RS_Y = 0.0f;
+			}
+			ouya.setAXIS_LS_X(player, LS_X);
+			ouya.setAXIS_LS_Y(player, LS_Y);
+			ouya.setAXIS_RS_X(player, RS_X);
+			ouya.setAXIS_RS_Y(player, RS_Y);
 		}
 		catch(Exception e){}
 		
